@@ -1,6 +1,7 @@
 @extends('admin.layout.layout')
 @section('main')
     <div class="flex flex-col flex-1">
+    @include('admin.layout.header')
         <main class="h-full pb-16 overflow-y-auto">
             <div class="container px-6 mx-auto grid">
                 <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
@@ -8,7 +9,7 @@
                 </h2>
                 <!-- Inputs with icons -->
                 <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
-                    Masukan guru baru
+                    Edit guru {{ $guru->nama }}
                 </h4>
                 <form class="grid grid-cols-2" action="{{ route('update_guru', $guru->id_guru) }}" method="POST">
                     @csrf

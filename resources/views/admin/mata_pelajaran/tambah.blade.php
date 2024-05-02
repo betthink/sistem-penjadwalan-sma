@@ -9,19 +9,19 @@
                 </h2>
                 <!-- Inputs with icons -->
                 <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
-                    Masukan guru baru
+                    Edit Mapel
                 </h4>
-                <form class="grid grid-cols-2" action="{{ route('store_guru') }}" method="POST">
+                <form class="grid grid-cols-2" action="" method="POST">
                     @csrf
                     <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
                         <label class="block text-sm">
-                            <span class="text-gray-700 dark:text-gray-400">Nama</span>
+                            <span class="text-gray-700 dark:text-gray-400">Mapel</span>
                             <!-- focus-within sets the color for the icon when input is focused -->
                             <div
                                 class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
-                                <input name="nama"
+                                <input  name="nama_mp"
                                     class="block w-full pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
-                                    placeholder="masukan nama guru" />
+                                    placeholder="masukan nama mp" />
                                 <div class="absolute inset-y-0 flex items-center ml-3 pointer-events-none">
                                     <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -35,13 +35,13 @@
                     </div>
                     <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
                         <label class="block text-sm">
-                            <span class="text-gray-700 dark:text-gray-400">kode guru</span>
+                            <span class="text-gray-700 dark:text-gray-400">Kode Mapel</span>
                             <!-- focus-within sets the color for the icon when input is focused -->
                             <div
                                 class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
-                                <input name="kode_guru"
+                                <input  name="kode_mp"
                                     class="block w-full pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
-                                    placeholder="masukan kode guru" />
+                                    placeholder="masukan kode Mapel" />
                                 <div class="absolute inset-y-0 flex items-center ml-3 pointer-events-none">
                                     <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -53,6 +53,7 @@
                             </div>
                         </label>
                     </div>
+
                     <button type="submit"
                         class="flex items-center justify-center p-3 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">Simpan</button>
                 </form>

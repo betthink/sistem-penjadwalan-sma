@@ -6,11 +6,11 @@
             <div class="container grid px-6 mx-auto">
                 <div class="flex items-center justify-between">
                     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-                        Master Kelas
+                        Master Mapel
                     </h2>
                     <a class="flex items-center justify-between p-3 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
-                        href="{{ route('tambah_kelas') }}">
-                        <span>Tambah kelas</span>
+                        href="{{ route('tambah_mapel') }}">
+                        <span>Tambah Mapel</span>
                     </a>
                 </div>
                 <!-- With actions -->
@@ -21,15 +21,13 @@
                             <thead>
                                 <tr
                                     class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                                    <th class="px-4 py-3">Tingkatan</th>
-                                    <th class="px-4 py-3">Jurusan</th>
-                                    <th class="px-4 py-3">Nomor kelas</th>
-                                    <th class="px-4 py-3">Wali kelas</th>
+                                    <th class="px-4 py-3">Nama Mapel</th>
+                                    <th class="px-4 py-3">Kode Mapel</th>
                                     <th class="px-4 py-3">Actions</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                                @foreach ($kelases as $kelas)
+                                @foreach ($mps as $mp)
                                     <tr class="text-gray-700 dark:text-gray-400">
                                         <td class="px-4 py-3">
                                             <div class="flex items-center text-sm">
@@ -39,25 +37,20 @@
                                                         aria-hidden="true"></div>
                                                 </div>
                                                 <div>
-                                                    <p class="font-semibold">{{ $kelas->tingkatan }}</p>
+                                                    <p class="font-semibold">{{ $mp->nama_mp }}</p>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="px-4 py-3 text-sm">
-                                            {{ $kelas->jurusan }}
-                                        </td>
+
                                         <td class="px-4 py-3 text-xs">
                                             <span
                                                 class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
-                                                {{ $kelas->nomor_kelas }}
+                                                {{ $mp->kode_mp }}
                                             </span>
-                                        </td>
-                                        <td class="px-4 py-3 text-sm">
-                                            {{ $kelas->wali_kelas }}
                                         </td>
                                         <td class="px-4 py-3">
                                             <div class="flex items-center space-x-4 text-sm">
-                                                <a href="{{ route('edit_kelas', ['id' => $kelas->id_kelas]) }}"
+                                                <a href="{{ route('edit_mapel', ['id' => $mp->id_mp]) }}"
                                                     class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                                                     aria-label="Edit">
                                                     <svg class="w-5 h-5" aria-hidden="true" fill="currentColor"
@@ -67,7 +60,7 @@
                                                         </path>
                                                     </svg>
                                                 </a>
-                                                <form action="{{ route('hapus_kelas', ['id' => $kelas->id_kelas]) }}"
+                                                <form action="{{ route('hapus_mapel', ['id' => $mp->id_mp]) }}"
                                                     method="post">
                                                     @csrf
                                                     @method('DELETE')
@@ -113,8 +106,7 @@
                                         </button>
                                     </li>
                                     <li>
-                                        <button
-                                            class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                                        <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
                                             1
                                         </button>
                                     </li>
