@@ -12,13 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schema::create('tb_jadwal_pelajaran', function (Blueprint $tb) {
-            $tb->id('id_jp');
-            $tb->string('id_kelas');
-            $tb->string('id_guru');
+        Schema::create('tb_hari', function (Blueprint $tb) {
+            $tb->id('id_hari');
             $tb->string('hari');
-            $tb->string('jam_mulai');
-            $tb->string('jam_selesai');
             $tb->timestamps();
         });
     }
@@ -29,6 +25,6 @@ return new class extends Migration
     public function down(): void
     {
         //
-        Schema::dropIfExists('tb_jadwal_pelajaran');
+        Schema::dropIfExists('tb_hari');
     }
 };

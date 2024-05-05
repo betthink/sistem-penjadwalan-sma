@@ -3,6 +3,8 @@
 use App\Http\Controllers\authController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\guruController;
+use App\Http\Controllers\hariController;
+use App\Http\Controllers\jamController;
 use App\Http\Controllers\kelasController;
 use App\Http\Controllers\mpController;
 use Illuminate\Support\Facades\Route;
@@ -35,3 +37,13 @@ Route::get('/mata-pelajaran/{id}/edit', [mpController::class, 'edit'])->name('ed
 Route::put('/mata-pelajaran/{id}', [mpController::class, 'update'])->name('update_mapel');
 Route::delete('/mata-pelajaran/{id}', [mpController::class, 'delete'])->name('hapus_mapel');
 
+// hari
+Route::get('/hari', [hariController::class, 'index'])->name('hari');
+Route::post('/hari', [hariController::class, 'create'])->name('tambah_hari');
+Route::delete('/hari/{id}', [hariController::class, 'delete'])->name('hapus_hari');
+Route::put('/hari/{id}', [hariController::class, 'update'])->name('update_hari');
+// jam
+Route::get('/jam', [jamController::class, 'index'])->name('jam');
+Route::post('/jam', [jamController::class, 'create'])->name('tambah_jam');
+Route::delete('/jam/{id}', [jamController::class, 'delete'])->name('hapus_jam');
+Route::put('/jam/{id}', [jamController::class, 'update'])->name('update_jam');

@@ -4,10 +4,7 @@
               <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
                   Sistem penjadwalan
               </a>
-
               <ul class="mt-6">
-
-
                   <li class="relative px-6 py-3">
                       @if ($title === 'Dashboard')
                           <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
@@ -100,18 +97,24 @@
                               aria-label="submenu">
                               <li
                                   class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                  <a class="w-full" href="pages/login.html">Guru kelas</a>
+                                  <a class="w-full" href="pages/login.html">Guru pengampu</a>
                               </li>
                               <li
                                   class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                  <a class="w-full" href="pages/create-account.html">
-                                      Guru Mapel
+                                  <a class="w-full" href="{{ route('hari') }}">
+                                      Hari
+                                  </a>
+                              </li>
+                              <li
+                                  class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                                  <a class="w-full" href="{{ route('jam') }}">
+                                      Jam
                                   </a>
                               </li>
                               <li
                                   class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
                                   <a class="w-full" href="pages/create-account.html">
-                                      Jadwal pelajaran
+                                      Generate jadwal
                                   </a>
                               </li>
 
