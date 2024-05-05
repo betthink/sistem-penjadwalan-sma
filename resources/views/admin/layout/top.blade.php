@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    @if (session('success'))
+    {{-- @if (session('success'))
         <div id="notification" class="bg-white border-l-4 border-green-500 text-green-700 p-4 notification" role="alert">
             <div class="flex items-center">
                 <div class="py-1">
@@ -50,5 +50,5 @@
             </div>
 
         </div>
-    @endif
+    @endif --}}
     <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">

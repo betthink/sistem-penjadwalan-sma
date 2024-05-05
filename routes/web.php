@@ -1,18 +1,23 @@
 <?php
 
+use App\Http\Controllers\authController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\guruController;
 use App\Http\Controllers\kelasController;
 use App\Http\Controllers\mpController;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', '/dashboard'); 
+Route::redirect('/', '/login');
+// routes auth
+Route::get('/login', [authController::class, 'showFormLogin'])->name('login');
+Route::post('/login', [authController::class, 'login'])->name('auth');
+Route::post('/logout', [authController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
 // routes guru
+Route::get('/guru', [guruController::class, 'index'])->name('guru');
 Route::delete('/guru-delete/{id}', [guruController::class, 'delete'])->name('hapus_guru');
 Route::get('/guru/{id}/edit', [guruController::class, 'edit'])->name('edit_guru');
 Route::put('/guru/{id}', [guruController::class, 'update'])->name('update_guru');
-Route::get('/guru', [guruController::class, 'index'])->name('guru');
 Route::get('/guru/tambah', [guruController::class, 'tambah'])->name('tambah_guru');
 Route::post('/guru/tambah', [guruController::class, 'create'])->name('store_guru');
 // routes kelas
@@ -29,3 +34,4 @@ Route::post('/mata-pelajaran/tambah', [mpController::class, 'create'])->name('st
 Route::get('/mata-pelajaran/{id}/edit', [mpController::class, 'edit'])->name('edit_mapel');
 Route::put('/mata-pelajaran/{id}', [mpController::class, 'update'])->name('update_mapel');
 Route::delete('/mata-pelajaran/{id}', [mpController::class, 'delete'])->name('hapus_mapel');
+
