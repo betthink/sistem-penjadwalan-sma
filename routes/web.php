@@ -7,6 +7,8 @@ use App\Http\Controllers\hariController;
 use App\Http\Controllers\jamController;
 use App\Http\Controllers\kelasController;
 use App\Http\Controllers\mpController;
+use App\Http\Controllers\pengampuController;
+use App\Http\Controllers\tahunakademikController;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/login');
@@ -47,3 +49,12 @@ Route::get('/jam', [jamController::class, 'index'])->name('jam');
 Route::post('/jam', [jamController::class, 'create'])->name('tambah_jam');
 Route::delete('/jam/{id}', [jamController::class, 'delete'])->name('hapus_jam');
 Route::put('/jam/{id}', [jamController::class, 'update'])->name('update_jam');
+// pengampu
+Route::get('/pengampu', [pengampuController::class, 'index'])->name('pengampu');
+Route::post('/pengampu', [pengampuController::class, 'create'])->name('tambah_pengampu');
+Route::delete('/pengampu/{id}', [pengampuController::class, 'delete'])->name('hapus_pengampu');
+Route::put('/pengampu/{id}', [pengampuController::class, 'update'])->name('update_pengampu');
+// tahun akademik
+Route::get('/tahun-akademik', [tahunakademikController::class, 'index'])->name('tahun_akademik');
+Route::post('/tahun-akademik', [tahunakademikController::class, 'create'])->name('tambah_tahun_akademik');
+Route::delete('/tahun-akademik/{id}', [tahunakademikController::class, 'delete'])->name('hapus_tahun_akademik');

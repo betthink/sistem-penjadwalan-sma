@@ -97,7 +97,13 @@
                               aria-label="submenu">
                               <li
                                   class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                  <a class="w-full" href="pages/login.html">Guru pengampu</a>
+                                  <a class="w-full" href="{{ route('pengampu') }}">Guru pengampu</a>
+                              </li>
+                               <li
+                                  class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                                  <a class="w-full" href="{{ route('tahun_akademik') }}">
+                                      Tahun akademik
+                                  </a>
                               </li>
                               <li
                                   class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
@@ -111,6 +117,7 @@
                                       Jam
                                   </a>
                               </li>
+                             
                               <li
                                   class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
                                   <a class="w-full" href="pages/create-account.html">
