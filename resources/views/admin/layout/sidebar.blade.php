@@ -55,7 +55,7 @@
                   </li>
 
                   <li class="relative px-6 py-3">
-                      @if ($title === 'Master mapel')
+                      @if ($title === 'Master Mapel')
                           <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
                               aria-hidden="true"></span>
                       @endif
@@ -99,10 +99,10 @@
                                   class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
                                   <a class="w-full" href="{{ route('pengampu') }}">Guru pengampu</a>
                               </li>
-                               <li
+                              <li
                                   class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
                                   <a class="w-full" href="{{ route('tahun_akademik') }}">
-                                      Tahun akademik
+                                      Periode Akademik
                                   </a>
                               </li>
                               <li
@@ -117,7 +117,7 @@
                                       Jam
                                   </a>
                               </li>
-                             
+
                               <li
                                   class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
                                   <a class="w-full" href="pages/create-account.html">
@@ -129,6 +129,20 @@
                       </template>
                   </li>
 
+                  <li class="relative px-6 py-3">
+                      @if ($title === 'Kelola user')
+                          <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                              aria-hidden="true"></span>
+                      @endif
+                      <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                          href="{{ route('mapel') }}">
+                          <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
+                              stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                              <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                          </svg>
+                          <span class="ml-4  {{ $title === 'Kelola user' ? 'text-white' : '' }}">Kelola user</span>
+                      </a>
+                  </li>
               </ul>
               <div class="px-6 my-6">
                   <form action="{{ route('logout') }}" class="" method="post">
@@ -147,15 +161,3 @@
               </div>
           </div>
       </aside>
-      <!-- Mobile sidebar -->
-      {{-- <!-- Backdrop -->
-      <div
-        x-show="isSideMenuOpen"
-        x-transition:enter="transition ease-in-out duration-150"
-        x-transition:enter-start="opacity-0"
-        x-transition:enter-end="opacity-100"
-        x-transition:leave="transition ease-in-out duration-150"
-        x-transition:leave-start="opacity-100"
-        x-transition:leave-end="opacity-0"
-        class="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"
-      ></div> --}}

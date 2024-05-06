@@ -15,7 +15,7 @@ class pengampuController extends Controller
     public function index()
     {
         $title = 'Halaman pengampu';
-        $pengampu = M_pengampu::all();
+        $pengampu = M_pengampu::paginate(5);
         $mapels = M_mp::all();
         $gurus = M_guru::all();
         $kelases = M_kelas::all();
@@ -30,17 +30,20 @@ class pengampuController extends Controller
     public function create(Request $request)
     {
         $validatedData = $request->validate([
-            'jam_mulai' => 'required|string|max:50|',
-            'jam_selesai' => 'required|string|max:50|',
+            'mata_pelajaran' => 'required|string|max:50|',
+            'guru' => 'required|string|max:50|',
+            'kelas' => 'required|string|max:50|',
+            'tahun_akademik' => 'required|string|max:50|',
         ]);
-
         // Simpan data guru baru ke dalam database
-        $jam = new M_pengampu();
-        $jam->jam_mulai = $request->jam_mulai;
-        $jam->jam_selesai = $request->jam_selesai;
-        $jam->save();
+        $datapengampu = new M_pengampu();
+        $datapengampu->mata_pelajaran = $request->mata_pelajaran;
+        $datapengampu->guru = $request->guru;
+        $datapengampu->kelas = $request->kelas;
+        $datapengampu->tahun_akademik = $request->tahun_akademik;
+        $datapengampu->save();
         // Jika penyimpanan berhasil, kembalikan respons berhasil
-        return redirect()->route('jam')->with('success', 'Jam  ' . $request->jam_mulai . '-'  . $request->jam_selesai . ' berhasil ditambahkan');
+        return redirect()->route('pengampu')->with('success', 'Data pengampu berhasil ditambahkan');
     }
     public function delete($id)
     {

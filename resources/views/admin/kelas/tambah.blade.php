@@ -1,16 +1,20 @@
 @extends('admin.layout.layout')
 @section('main')
     <div class="flex flex-col flex-1">
-          @include('admin.layout.header')
+        @include('admin.layout.header')
         <main class="h-full pb-16 overflow-y-auto">
             <div class="container px-6 mx-auto grid">
                 <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-                    Forms
+                       Masukan kelas baru
                 </h2>
+                @if (session('error'))
+                    <div class="bg-red-500 text-white p-4 mb-4">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
                 <!-- Inputs with icons -->
-                <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
-                    Masukan kelas baru
-                </h4>
+             
                 <form class="grid grid-cols-2" action="{{ route('store_kelas') }}" method="POST">
                     @csrf
                     <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
@@ -73,15 +77,21 @@
                             </div>
                         </label>
                     </div>
-                    <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                    <div class="px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
                         <label class="block text-sm">
                             <span class="text-gray-700 dark:text-gray-400">Wali kelas</span>
-                            <!-- focus-within sets the color for the icon when input is focused -->
                             <div
                                 class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
-                                <input name="wali_kelas"
-                                    class="block w-full pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
-                                    placeholder="masukan Wali kelas" />
+                                <select name="wali_kelas"
+                                    class="block w-full pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-select">
+                                    <option value="#" selected disabled>Pilih guru</option>
+                                    @foreach ($gurus as $guru)
+                                        <option value="{{ $guru->id_guru }}" class="">
+                                            {{ $guru->nama }}</option>
+                                    @endforeach
+                                </select>
+
+
                                 <div class="absolute inset-y-0 flex items-center ml-3 pointer-events-none">
                                     <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">

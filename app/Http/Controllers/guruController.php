@@ -11,7 +11,7 @@ class guruController extends Controller
     public function index()
     {
         $title = 'Master guru';
-        $gurus = M_guru::all();
+        $gurus = M_guru::paginate(5);
         return view('admin.guru.index', compact('title', 'gurus'));
     }
     public function tambah()

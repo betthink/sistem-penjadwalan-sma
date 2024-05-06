@@ -11,7 +11,7 @@ class mpController extends Controller
     public function index()
     {
         $title = 'Master Mapel';
-        $mps = M_mp::all();
+        $mps = M_mp::paginate(5);
         return view('admin.mata_pelajaran.index', compact('title', 'mps'));
     }
     public function tambah()

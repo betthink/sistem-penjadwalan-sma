@@ -147,7 +147,7 @@
                         @csrf
                         <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
                             <label class="block text-sm">
-                                 <span class="text-gray-700 dark:text-gray-400">Jam mulai</span>
+                                <span class="text-gray-700 dark:text-gray-400">Jam mulai</span>
                                 <div
                                     class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
                                     <input name="jam_mulai"
@@ -167,7 +167,7 @@
                         </div>
                         <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
                             <label class="block text-sm">
-                                   <span class="text-gray-700 dark:text-gray-400">Jam selesai</span>
+                                <span class="text-gray-700 dark:text-gray-400">Jam selesai</span>
                                 <div
                                     class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
                                     <input name="jam_selesai"
@@ -185,7 +185,6 @@
                                 </div>
                             </label>
                         </div>
-
                         <button type="submit"
                             class="flex items-center justify-center p-3 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">Simpan</button>
                     </form>

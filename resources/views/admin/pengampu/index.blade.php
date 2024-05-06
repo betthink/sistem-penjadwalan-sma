@@ -6,14 +6,15 @@
             <div class="container grid px-6 mx-auto">
                 <div class="flex items-center justify-between">
                     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-                        Jadwal
+                        Pengampu
                     </h2>
+
                     <button @click="openModal"
                         class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
                         Tambah pengampu
                     </button>
                 </div>
-                <!-- With actions -->
+                <!-- Tables and pagination -->
                 <div class="w-full overflow-hidden rounded-lg shadow-xs">
                     <div class="w-full overflow-x-auto">
                         <table class="w-full whitespace-no-wrap">
@@ -29,19 +30,54 @@
                             </thead>
                             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                                 @foreach ($pengampu as $item)
-                                    <td class="px-4 py-3 text-sm">
-                                        {{ $item->mata_pelajaran }}
+                                    @php
+                                        $nama_mapel = 'none';
+                                        foreach ($mapels as $mapel) {
+                                            if ($item->mata_pelajaran == $mapel->id_mp) {
+                                                $nama_mapel = $mapel->nama_mp;
+                                                break; // Menghentikan loop setelah menemukan guru yang cocok
+                                            }
+                                        }
+                                        $nama_guru = 'none';
+                                        foreach ($gurus as $guru) {
+                                            if ($item->guru == $guru->id_guru) {
+                                                $nama_guru = $guru->nama;
+                                                break; // Menghentikan loop setelah menemukan guru yang cocok
+                                            }
+                                        }
+                                        $nama_kelas = 'none';
+                                        foreach ($kelases as $kelas) {
+                                            if ($item->kelas == $kelas->id_kelas) {
+                                                $nama_kelas =
+                                                    $kelas->tingkatan .
+                                                    ' ' .
+                                                    $kelas->jurusan .
+                                                    ' ' .
+                                                    $kelas->nomor_kelas;
+                                                break; // Menghentikan loop setelah menemukan kelas yang cocok
+                                            }
+                                        }
+                                        $nama_tahun = 'none';
+                                        foreach ($tahuns as $tahun) {
+                                            if ($item->tahun_akademik == $tahun['id_ta']) {
+                                                $nama_tahun = $tahun['tahun_mulai'] . '/' . $tahun['tahun_selesai'];
+                                                break; // Menghentikan loop setelah menemukan kelas yang cocok
+                                            }
+                                        }
+                                    @endphp
+                                    <td class="px-4 py-3 text-sm dark:text-white">
+                                        {{ $nama_mapel }}
                                     </td>
-                                    <td class="px-4 py-3 text-sm">
-                                        {{ $item->guru }}
+                                    <td class="px-4 py-3 text-sm dark:text-white">
+                                        {{ $nama_guru }}
                                     </td>
-                                    <td class="px-4 py-3 text-sm">
-                                        {{ $item->kelas }}
+                                    <td class="px-4 py-3 text-sm dark:text-white">
+                                        {{ $nama_kelas }}
                                     </td>
                                     <td class="px-4 py-3 text-xs">
                                         <span
                                             class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
-                                            {{ $item->tahun_akademik }}
+                                            {{ $nama_tahun }}
                                         </span>
                                     </td>
                                     <td class="px-4 py-3">
@@ -71,47 +107,19 @@
                             </tbody>
                         </table>
                     </div>
+                    <!-- Pagination -->
                     <div
-                        class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
-                        <span class="flex items-center col-span-3">
-                            Showing 21-30 of 100
+                        class="flex px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+                        <span class="flex items-center  col-span-3">
+                            Showing {{ $pengampu->firstItem() }}-{{ $pengampu->lastItem() }} of {{ $pengampu->total() }}
                         </span>
-                        <span class="col-span-2"></span>
-                        <!-- Pagination -->
-                        <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-                            <nav aria-label="Table navigation">
-                                <ul class="inline-flex items-center">
-                                    <li>
-                                        <button
-                                            class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple"
-                                            aria-label="Previous">
-                                            <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
-                                                <path
-                                                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                                                    clip-rule="evenodd" fill-rule="evenodd"></path>
-                                            </svg>
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
-                                            1
-                                        </button>
-                                    </li>
+                        <div
+                            class="flex px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+                            <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+                                {{ $pengampu->links() }}
+                            </span>
+                        </div>
 
-                                    <li>
-                                        <button
-                                            class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple"
-                                            aria-label="Next">
-                                            <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
-                                                <path
-                                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                                    clip-rule="evenodd" fill-rule="evenodd"></path>
-                                            </svg>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </span>
                     </div>
                 </div>
             </div>
@@ -149,7 +157,7 @@
                         Tambah pengampu
                     </p>
                     <!-- Modal description -->
-                    <form class="grid grid-cols-2" action="{{ route('tambah_jam') }}" method="POST">
+                    <form class="grid grid-cols-2" action="{{ route('tambah_pengampu') }}" method="POST">
                         @csrf
 
                         <div class="px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
@@ -211,7 +219,7 @@
                                 <span class="text-gray-700 dark:text-gray-400">Kelas</span>
                                 <div
                                     class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
-                                    <select name="mata_pelajaran"
+                                    <select name="kelas"
                                         class="block w-full pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-select">
                                         <option value="#" selected disabled>Pilih kelas</option>
                                         @foreach ($kelases as $kelas)
@@ -239,7 +247,7 @@
                                 <span class="text-gray-700 dark:text-gray-400">Periode akademik</span>
                                 <div
                                     class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
-                                    <select name="mata_pelajaran"
+                                    <select name="tahun_akademik"
                                         class="block w-full pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-select">
                                         <option value="#" selected disabled>Pilih Periode akademik</option>
                                         @foreach ($tahuns as $tahun)
@@ -247,7 +255,6 @@
                                                 {{ $tahun['tahun_mulai'] }} / {{ $tahun['tahun_selesai'] }}</option>
                                         @endforeach
                                     </select>
-
 
                                     <div class="absolute inset-y-0 flex items-center ml-3 pointer-events-none">
                                         <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"

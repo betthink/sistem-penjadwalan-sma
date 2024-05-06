@@ -11,13 +11,8 @@ class tahunakademikController extends Controller
     public function index()
     {
         $title = 'Halaman pengampu';
-        $tahuns = M_tahun_akademik::all()->toArray();
+        $tahuns = M_tahun_akademik::orderBy('tahun_mulai')->paginate(5);
         // Fungsi pembanding untuk mengurutkan berdasarkan tahun_mulai
-        usort($tahuns, function ($a, $b) {
-            return $a['tahun_mulai'] - $b['tahun_mulai'];
-        });
-
-        // dd($tahuns);
 
         return view('admin.tahun_akademik.index', compact('title', 'tahuns'));
     }
