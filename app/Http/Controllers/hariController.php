@@ -11,7 +11,7 @@ class hariController extends Controller
     public function index()
     {
         $title = 'Halaman Hari';
-        $days = M_hari::all();
+        $days = M_hari::paginate(5);
         return view('admin.hari.index', compact('title', 'days'));
     }
     public function create(Request $request)

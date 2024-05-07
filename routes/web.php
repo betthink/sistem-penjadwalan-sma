@@ -31,7 +31,7 @@ Route::get('/kelas/{id}/edit', [kelasController::class, 'edit'])->name('edit_kel
 Route::post('/kelas/tambah', [kelasController::class, 'create'])->name('store_kelas');
 Route::delete('/kelas-delete/{id}', [kelasController::class, 'delete'])->name('hapus_kelas');
 Route::put('/kelas/{id}', [kelasController::class, 'update'])->name('update_kelas');
-// routes
+// routes mapel
 Route::get('/mata-pelajaran', [mpController::class, 'index'])->name('mapel');
 Route::get('/mata-pelajaran/tambah', [mpController::class, 'tambah'])->name('tambah_mapel');
 Route::post('/mata-pelajaran/tambah', [mpController::class, 'create'])->name('store_mapel');

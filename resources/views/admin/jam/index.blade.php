@@ -27,17 +27,11 @@
                             </thead>
                             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                                 @foreach ($hours as $hour)
-                                    <td class="px-4 py-3 text-xs">
-                                        <span
-                                            class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
-                                            {{ $hour->jam_mulai }}
-                                        </span>
+                                    <td class="px-4 py-3 text-sm dark:text-white">
+                                        {{ $hour->jam_mulai }}
                                     </td>
-                                    <td class="px-4 py-3 text-xs">
-                                        <span
-                                            class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
-                                            {{ $hour->jam_selesai }}
-                                        </span>
+                                    <td class="px-4 py-3 text-sm dark:text-white">
+                                        {{ $hour->jam_selesai }}
                                     </td>
                                     <td class="px-4 py-3">
                                         <div class="flex items-center space-x-4 text-sm">
@@ -65,48 +59,21 @@
                             </tbody>
                         </table>
                     </div>
+                    <!-- Pagination -->
                     <div
-                        class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
-                        <span class="flex items-center col-span-3">
-                            Showing 21-30 of 100
+                        class="flex px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+                        <span class="flex items-center  col-span-3">
+                            Showing {{ $hours->firstItem() }}-{{ $hours->lastItem() }} of {{ $hours->total() }}
                         </span>
-                        <span class="col-span-2"></span>
-                        <!-- Pagination -->
-                        <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-                            <nav aria-label="Table navigation">
-                                <ul class="inline-flex items-center">
-                                    <li>
-                                        <button
-                                            class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple"
-                                            aria-label="Previous">
-                                            <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
-                                                <path
-                                                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                                                    clip-rule="evenodd" fill-rule="evenodd"></path>
-                                            </svg>
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
-                                            1
-                                        </button>
-                                    </li>
+                        <div
+                            class="flex px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+                            <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+                                {{ $hours->links() }}
+                            </span>
+                        </div>
 
-                                    <li>
-                                        <button
-                                            class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple"
-                                            aria-label="Next">
-                                            <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
-                                                <path
-                                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                                    clip-rule="evenodd" fill-rule="evenodd"></path>
-                                            </svg>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </span>
                     </div>
+                    <!--end Pagination -->
                 </div>
             </div>
         </main>
@@ -152,7 +119,7 @@
                                     class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
                                     <input name="jam_mulai"
                                         class="block w-full pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
-                                        placeholder="masukan jam mulai" />
+                                        type="time" placeholder="00:00:00" />
                                     <div class="absolute inset-y-0 flex items-center ml-3 pointer-events-none">
                                         <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                             stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
@@ -172,7 +139,7 @@
                                     class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
                                     <input name="jam_selesai"
                                         class="block w-full pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
-                                        placeholder="masukan jam selesai" />
+                                        type="time" placeholder="00:00:00" />
                                     <div class="absolute inset-y-0 flex items-center ml-3 pointer-events-none">
                                         <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                             stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"

@@ -11,7 +11,11 @@ class jamController extends Controller
     public function index()
     {
         $title = 'Halaman jam';
-        $hours = M_jam::all();
+        $hours = M_jam::paginate(5);
+        foreach ($hours as $hour) {
+            $hour->jam_mulai = substr($hour->jam_mulai, 0, 5);
+            $hour->jam_selesai = substr($hour->jam_selesai, 0, 5);
+        }
         return view('admin.jam.index', compact('title', 'hours'));
     }
     public function create(Request $request)
